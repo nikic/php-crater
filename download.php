@@ -40,7 +40,7 @@ foreach (getTopPackages($minPackage, $maxPackage) as $i => $packageName) {
     }
 
     // Thanks to people excluding tests from dist packages,
-    // we're forced to clone soure repos here.
+    // we're forced to clone source repos here.
     $package = $versions[$version];
     if ($package['source'] === null) {
         echo "Skipping due to missing source\n";
