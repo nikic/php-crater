@@ -23,6 +23,9 @@ if ($argc < 3) {
     return;
 }
 
+$repoListFileName = __DIR__ . '/downloaded_repo_list';
+$repoListFile = fopen($repoListFileName, 'a');
+
 $minPackage = $argv[1];
 $maxPackage = $argv[2];
 foreach (getTopPackages($minPackage, $maxPackage) as $i => $packageName) {
@@ -61,4 +64,6 @@ foreach (getTopPackages($minPackage, $maxPackage) as $i => $packageName) {
             break;
         }
     }
+
+    fwrite($repoListFile, 'repos/' . $packageName . "\n");
 }

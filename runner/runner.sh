@@ -12,7 +12,7 @@ php -r "if (hash_file('sha384', 'composer-setup.php') === 'c31c1e292ad7be5f49291
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
 
-while read repo; do
+while read -u 10 repo; do
     echo "REPO $repo"
     mkdir -p $workdir
     cp -r $repo/* $workdir
@@ -26,4 +26,4 @@ while read repo; do
 
     popd
     rm -rf $workdir
-done < /repo_list
+done 10</repo_list
