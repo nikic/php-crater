@@ -12,6 +12,7 @@ $failedRepos = [];
 foreach (array_chunk(array_slice($split, 1), 2) as [$repo, $log]) {
     $interesting = extractInterestingLog($log);
     if ($interesting) {
+        $failedRepos[] = $repo;
         echo $repo;
         echo str_replace("\n", "\n    ", "\n" . $interesting);
         echo "\n\n";
