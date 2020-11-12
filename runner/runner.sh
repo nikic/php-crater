@@ -12,18 +12,18 @@ php -r "if (hash_file('sha384', 'composer-setup.php') === 'c31c1e292ad7be5f49291
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
 
-for repo in repos/*/*; do
+while read repo; do
     echo "REPO $repo"
     mkdir -p $workdir
     cp -r $repo/* $workdir
     pushd $workdir
 
     echo "Installing..."
-    ../composer.phar install --no-progress --ignore-platform-req=php
+    timeout 300 ../composer.phar install --no-progress --ignore-platform-req=php
 
     echo "Testing..."
-    timeout 180 vendor/bin/phpunit
+    timeout 300 vendor/bin/phpunit
 
     popd
     rm -rf $workdir
-done
+done < /repo_list
