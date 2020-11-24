@@ -21,7 +21,11 @@ while read -u 10 repo; do
     timeout 300 ../composer.phar install --no-progress --ignore-platform-req=php
 
     echo "Testing..."
-    timeout 300 vendor/bin/phpunit
+    if test -f vendor/bin/phpunit; then
+        timeout 300 vendor/bin/phpunit
+    elif test -f vendor/bin/simple-phpunit; then
+        timeout 300 vendor/bin/simple-phpunit
+    fi
 
     popd
     rm -rf $workdir
