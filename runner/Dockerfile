@@ -17,6 +17,7 @@ RUN apt-get update && \
         libsqlite3-0 \
         libsnmp35 \
         libtidy5deb1 \
+        libubsan1 \
         libxml2 \
         libxslt1.1 \
         libzip5 \
