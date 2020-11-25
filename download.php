@@ -58,7 +58,7 @@ foreach (getTopPackages($minPackage, $maxPackage) as $i => $packageName) {
     $repo = __DIR__ . '/repos/' . $packageName;
     if (!is_dir($repo)) {
         echo "Cloning $packageName @ $version from $git...\n";
-        exec("git clone $git $repo", $execOutput, $execRetval);
+        exec("git clone --depth 1 $git $repo", $execOutput, $execRetval);
         if ($execRetval !== 0) {
             echo "git clone failed: $execOutput\n";
             break;
