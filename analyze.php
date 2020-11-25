@@ -25,7 +25,7 @@ file_put_contents('failed_repo_list', implode("\n", $failedRepos));
 function extractInterestingLog(string $log): ?string {
     $interesting = [];
     foreach (explode("\n", $log) as $line) {
-        if (preg_match('/AddressSanitizer|Assertion `/', $line)) {
+        if (preg_match('/AddressSanitizer|Assertion `|runtime error/', $line)) {
             $interesting[] = $line;
         }
     }
