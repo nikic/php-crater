@@ -11,6 +11,8 @@ Usage
 It's unlikely that this will work for anyone but me, but the basic usage is:
 
 ```sh
+composer install
+
 # Clone top 2k packages into repos/ (~20GB):
 php download.php 0 2000
 
